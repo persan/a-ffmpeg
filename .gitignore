@@ -3,3 +3,14 @@
 
 # Ada Library Information
 *.ali
+*.a
+*-loc.xml
+*.stderr
+*.stdout
+b__*.ad?
+*.bexch
+messages.txt
+gnatinspect.db
+*.pyc
+obj
+
