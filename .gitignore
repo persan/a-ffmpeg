@@ -14,3 +14,6 @@ gnatinspect.db
 *.pyc
 obj
 
+.obj
+_*
+.gen
