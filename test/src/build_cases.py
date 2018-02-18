@@ -3,38 +3,31 @@ import glob
 from os.path import *
 import re
 
-TEST_CASE_SPEC = """with aunit;
-package %(testunit)s is
-    type AUnit.Test_Cases.Test_Case with
-       null;
-    end record;
+MAIN="""with Ffmpeg.Tests.Main_Generic;
+with %(suit_name)s;
+procedure %(name)s is new Ffmpeg.Tests.Main_Generic (Suits.Suit);"""
+MAIN_NAME="Ffmpeg.%(name)s.Tests.Main"
 
-end %(testunit)s;
-"""
-
-TEST_CASE_BODY = """with aunit;
-package body %(testunit)s is
-
-end %(testunit)s;
-"""
+SUIT="""with Ffmpeg.Tests.Suits_Generic;
+package %(name)s is new Ffmpeg.Tests.Suits_Generic (Test_Case);"""
+SUIT_NAME="""FFMpeg.%(name)s.Tests.Suits"""
 
 
-def generate(unitundertest, testunit):
-    pass
+def ada2file(name):
+    return name.lower().replace(".", "-") + ".ads"
 
 
-def getpackagename(path):
-    with open(path) as inf:
-        for line in inf:
-            line = line.strip()
-            matches = re.match(r"^package\s+(\S+)\s+is.*", line)
-            if matches:
-                return matches.group(1)
+def write(path, data):
+    if not exists(path):
+        with open(path, "w") as outf:
+            outf.write(data)
 
-
-# for i in glob.glob("../src/gen/ffmpeg-low_level-ffmpeg_*_h.ads"):
-for i in glob.glob("../src/gen/ffmpeg-low_level-ffmpeg_*avformat_h.ads"):
-    testname = splitext(basename(i))[0].split("_")[-2]
-    testunit = "Ffmpeg.Tests.%s" % testname
-    unitundertest = getpackagename(i)
-    generate(unitundertest, testunit)
+for i in glob.glob("src/tests/*.ads"):
+    i = splitext(basename(i))[0].split("-")[1]
+    if i != "tests":
+        suit_name = SUIT_NAME % {"name": i}
+        main_name = MAIN_NAME % {"name": i}
+        suit = SUIT % {"name": suit_name}
+        main = MAIN % {"name": main_name, "suit_name": suit_name}
+        write(join("src", ada2file(main_name)), main)
+        write(join("src", ada2file(suit_name)), suit)

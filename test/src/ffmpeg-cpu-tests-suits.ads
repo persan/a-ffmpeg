@@ -1,4 +1,2 @@
-with AUnit.Test_Suites;
-package FFMpeg.cpu.Tests.Suits is
-   function Suit return AUnit.Test_Suites.Access_Test_Suite;
-end FFMpeg.cpu.Tests.Suits;
+with Ffmpeg.Tests.Suits_Generic;
+package FFMpeg.cpu.Tests.Suits is new Ffmpeg.Tests.Suits_Generic (Test_Case);

@@ -3,8 +3,35 @@ with "aunit";
 
 project Ffmpeg.Tests is
 
-   for Source_Dirs use ("src");
-   for Object_Dir use "obj";
-   for Main use ("ffmpeg-tests-main.adb", "ffmpeg-avutil-tests-main.adb", "ffmpeg-low_level-tests-main.adb");
+   for Source_Dirs use ("src/**");
+   for Object_Dir use ".obj";
+   for Exec_Dir use "bin";
+
+   for Main use project'Main & ("ffmpeg-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-avcodec-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-avdevice-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-avfilter-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-avformat-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-avio-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-avutil-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-buffer-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-channel_layout-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-common-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-cpu-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-dict-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-frame-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-log-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-low_level-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-mathematics-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-mem-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-opt-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-pixfmt-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-postprocess-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-rational-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-resample-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-samplefmt-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-swresample-tests-main.ads");
+   for Main use project'Main & ("ffmpeg-swscale-tests-main.ads");
+
 
 end Ffmpeg.Tests;
