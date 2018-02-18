@@ -457,8 +457,8 @@ package FFMpeg.Low_Level.ffmpeg_libavdevice_avdevice_h is
   -- * AVOption table used by devices to implement device capabilities API. Should not be used by a user.
   --  
 
-   av_device_capabilities : aliased array (size_t) of aliased FFMpeg.Low_Level.ffmpeg_libavutil_opt_h.AVOption;  -- /usr/include/ffmpeg/libavdevice/avdevice.h:419
-   pragma Import (C, av_device_capabilities, "av_device_capabilities");
+   --   av_device_capabilities : aliased array (size_t) of aliased FFMpeg.Low_Level.ffmpeg_libavutil_opt_h.AVOption;  -- /usr/include/ffmpeg/libavdevice/avdevice.h:419
+   --  pragma Import (C, av_device_capabilities, "av_device_capabilities");
 
   --*
   -- * Initialize capabilities probing API based on AVOption API.

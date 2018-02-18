@@ -36,3 +36,9 @@ s!   type AVCodecParser is record!   type AVCodecParser_codec_ids_array is array
 #
 s!   type AVFilterLink is record!   type anon_69 is (AVLINK_UNINIT, AVLINK_STARTINIT, AVLINK_INIT);\
    type AVFilterLink is record!
+
+#-------------------------------------------------------
+# ffmpeg-low_level-ffmpeg_libavdevice_avdevice_h.ads
+#
+s!av_device_capabilities : aliased array (size_t)!--   av_device_capabilities : aliased array (size_t)!
+s!pragma Import (C, av_device_capabilities,!--  pragma Import (C, av_device_capabilities,!
